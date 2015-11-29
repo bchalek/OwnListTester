@@ -22,7 +22,7 @@ void TestBuffer()
 	bool testObject2 = true;
 	char testObject3 = '1';
 
-	Buffer testBuffer = new Buffer();
+	Buffer testBuffer;
 	testBuffer.Push(&testObject1);
 	testBuffer.Push(&testObject2);
 	testBuffer.Push(&testObject3);
@@ -34,7 +34,6 @@ void TestBuffer()
 	int result1 = *temp1;
 	bool result2 = *temp2;
 	char result3 = *temp3;
-
 }
 
 
@@ -44,7 +43,7 @@ void TestStack()
 	bool testObject2 = true;
 	char testObject3 = '1';
 
-	Stack testStack = new Stack();
+	Stack testStack;
 	testStack.Push(&testObject1);
 	testStack.Push(&testObject2);
 	testStack.Push(&testObject3);
@@ -56,5 +55,4 @@ void TestStack()
 	int result1 = *temp1;
 	bool result2 = *temp2;
 	char result3 = *temp3;
-
 }
