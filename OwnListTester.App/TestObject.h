@@ -1,5 +1,5 @@
 #pragma once
-ref class TestObject
+class TestObject
 {
 public:
 	int number;

@@ -1,9 +1,10 @@
-// OwnListTester.App.cpp : Defines the entry point for the console application.
-// compile with: cl /EHsc Stack.cpp /link OwnListTester.Data.lib
+
 
 #include "stdafx.h"
 #include "Stack.h"
 #include "Buffer.h"
+#include "TestObject.h"
+
 void TestBuffer();
 void TestStack();
 
@@ -18,15 +19,22 @@ int main()
 
 void TestBuffer()
 {
+	TestObject testObject;
+	testObject.boolean = false;
+	testObject.character = 'z';
+	testObject.number = 9;
+
 	int testObject1 = 1;
 	bool testObject2 = true;
 	char testObject3 = '1';
 
 	Buffer testBuffer;
+	testBuffer.Push(&testObject);
 	testBuffer.Push(&testObject1);
 	testBuffer.Push(&testObject2);
 	testBuffer.Push(&testObject3);
 
+	TestObject * temp = (TestObject*)testBuffer.Pop();
 	int * temp1 = (int*)testBuffer.Pop();
 	bool* temp2 = (bool*)testBuffer.Pop();
 	char * temp3 = (char*)testBuffer.Pop();
@@ -34,16 +42,31 @@ void TestBuffer()
 	int result1 = *temp1;
 	bool result2 = *temp2;
 	char result3 = *temp3;
+
+	TestObject result = *temp;
+	int resultNumber = result.number;
+	bool resultBoolean = result.boolean;
+	char resultCharacter = result.character;
+
+	testObject.boolean = true; 
+
+	bool newResultBoolean = result.boolean;
 }
 
 
 void TestStack()
 {
+	TestObject testObject;
+	testObject.boolean = false;
+	testObject.character = 'z';
+	testObject.number = 9;
+
 	int testObject1 = 1;
 	bool testObject2 = true;
 	char testObject3 = '1';
 
 	Stack testStack;
+	testStack.Push(&testObject);
 	testStack.Push(&testObject1);
 	testStack.Push(&testObject2);
 	testStack.Push(&testObject3);
@@ -51,8 +74,15 @@ void TestStack()
 	char* temp3 = (char*)testStack.Pop();
 	bool* temp2 = (bool*)testStack.Pop();
 	int* temp1 = (int*)testStack.Pop();
+	TestObject * temp = (TestObject*)testStack.Pop();
 
 	int result1 = *temp1;
 	bool result2 = *temp2;
 	char result3 = *temp3;
+
+
+	TestObject result = *temp;
+	int resultNumber = result.number;
+	bool resultBoolean = result.boolean;
+	char resultCharacter = result.character;
 }
