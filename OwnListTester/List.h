@@ -14,8 +14,8 @@ public:
 
 	void Add(void* object);
 	void Remove(void* object);
-	void* FirstOrDefault(void* object);
-	void* LastOrDefault(void* object);
+	void* FirstOrDefault();
+	void* LastOrDefault();
 	bool Any();
 };
 

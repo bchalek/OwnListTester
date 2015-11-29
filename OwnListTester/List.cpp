@@ -74,14 +74,14 @@ void List::Remove(void* object)
 	}
 }
 
-void* List::FirstOrDefault(void* object)
+void* List::FirstOrDefault()
 {
 	if(FirstItem!=nullptr)
 		return FirstItem->Object;
 	return nullptr;
 }
 
-void* List::LastOrDefault(void* object)
+void* List::LastOrDefault()
 {
 	ListItem* LastItem = FirstItem;
 	while (LastItem !=nullptr && LastItem->NextItem != nullptr)
