@@ -9,18 +9,18 @@ List::List(void)
 
 List::List(void* object)
 {
-	FirstItem = new ListItem(object);
+	FirstItem = new Item(object);
 	Count=1;
 }
 
 List::~List(void)
 {
-	ListItem* LastItem = FirstItem;
+	Item* LastItem = FirstItem;
 	while (LastItem !=nullptr)
 	{
-		ListItem* toRemove = LastItem;
+		Item* toRemove = LastItem;
 		LastItem = LastItem->NextItem;
-		toRemove->~ListItem();
+		toRemove->~Item();
 	}
 }
 
@@ -28,17 +28,17 @@ void List::Add(void* object)
 {
 	if(FirstItem !=nullptr)
 	{
-		ListItem* LastItem = FirstItem;
+		Item* LastItem = FirstItem;
 		while (LastItem !=nullptr && LastItem->NextItem != nullptr)
 		{
 			LastItem = LastItem->NextItem;
 		}
-		LastItem->NextItem=new ListItem(object);
+		LastItem->NextItem=new Item(object);
 		Count++;
 	}
 	else
 	{
-		FirstItem =new ListItem(object);
+		FirstItem =new Item(object);
 		Count++;
 	}
 }
@@ -47,28 +47,28 @@ void List::Remove(void* object)
 {
 	if(FirstItem !=nullptr && FirstItem->Object!=object)
 	{
-		ListItem* LastItem = FirstItem;
+		Item* LastItem = FirstItem;
 		while (LastItem !=nullptr && LastItem->NextItem!=nullptr  && LastItem->NextItem->Object != object)
 		{
 			LastItem = LastItem->NextItem;
 		}
-		ListItem* toRemove = LastItem->NextItem;
+		Item* toRemove = LastItem->NextItem;
 
 		if(toRemove!=nullptr)
 		{
 			LastItem->NextItem=toRemove->NextItem;
-			toRemove->~ListItem();
+			toRemove->~Item();
 			Count--;
 		}
 	}
 	else
 	{
-		ListItem* toRemove = FirstItem;
+		Item* toRemove = FirstItem;
 
 		if(toRemove!=nullptr)
 		{
 			FirstItem =toRemove->NextItem;
-			toRemove->~ListItem();
+			toRemove->~Item();
 			Count--;
 		}
 	}
@@ -83,7 +83,7 @@ void* List::FirstOrDefault()
 
 void* List::LastOrDefault()
 {
-	ListItem* LastItem = FirstItem;
+	Item* LastItem = FirstItem;
 	while (LastItem !=nullptr && LastItem->NextItem != nullptr)
 	{
 		LastItem = LastItem->NextItem;

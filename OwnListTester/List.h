@@ -1,10 +1,10 @@
-#include "ListItem.h";
+#include "Item.h";
 #pragma once
 class List
 {
 public:
 
-	ListItem* FirstItem;
+	Item* FirstItem;
 	int Count;
 	
 	List(void);
